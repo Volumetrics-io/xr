@@ -150,6 +150,7 @@ function intersectSphereMesh(pointerSphere, mesh, meshMatrixWorld, instanceId) {
             materialIndex: 0,
             normal,
         },
+        normal,
         point,
         instanceId,
         object: mesh,
