@@ -1,0 +1,29 @@
+{
+  "name": "@pmndrs/xr",
+  "author": "Bela Bohlender",
+  "type": "module",
+  "description": "",
+  "version": "0.2.0",
+  "license": "SEE LICENSE IN LICENSE",
+  "scripts": {
+    "build": "tsc",
+    "check:prettier": "prettier --check src",
+    "check:eslint": "eslint 'src/**/*.ts'",
+    "fix:prettier": "prettier --write src",
+    "fix:eslint": "eslint 'src/**/*.ts' --fix"
+  },
+  "dependencies": {
+    "zustand": "^4.5.2",
+    "@pmndrs/pointer-events": "git://github.com/pmndrs/xr#package-pointer-events",
+    "@pmndrs/xr": "git://github.com/pmndrs/xr#package-vanilla-xr",
+    "@react-three/xr": "git://github.com/pmndrs/xr#package-react-three-xr"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./internals": "./dist/internals.js"
+  }
+}
