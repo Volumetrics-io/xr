@@ -1,16 +1,19 @@
 # @react-three/xr
 
 ```tsx
-import { createXR } from "@react-three/xr"
+import { Canvas } from "@react-three/fiber"
+import { createXRStore } from "@react-three/xr"
 
-const { enterAR, XR } = createXR()
+const store = createXRStore()
 
-function App() {
+export function App() {
     return <>
-        <button onClick={enterAR}>EnterAR</button>
+        <button onClick={() => store.enterAR()}>Enter AR</button>
         <Canvas>
-            <XR>
-                <Box />
+            <XR store={store}>
+                <mesh>
+                    <boxGeometry />
+                </mesh>
             </XR>
         </Canvas>
     </>
