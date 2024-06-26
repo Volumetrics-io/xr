@@ -1,0 +1,11 @@
+import { createContext } from 'react';
+export const xrContext = createContext(undefined);
+export const xrMeshContext = createContext(undefined);
+export const xrPlaneContext = createContext(undefined);
+export const xrHandContext = createContext(undefined);
+export const xrControllerContext = createContext(undefined);
+export const xrGazeContext = createContext(undefined);
+export const xrScreenInputContext = createContext(undefined);
+export const xrTransientPointerContext = createContext(undefined);
+export const xrReferenceSpaceContext = createContext(undefined);
+export const combinedPointerContext = createContext(undefined);
