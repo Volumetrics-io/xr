@@ -1,8 +1,10 @@
-```ts
-const { origin, enterAR } = createXR()
+# XR
 
-scene.add(origin)
+Vanilla threejs version
+
+```ts
+const store = createXRStore(canvas, scene, camera, renderer.xr)
 
 const btn = document.getElementById('enter-ar')
-btn.addEventListener('click', enterAR)
+btn.addEventListener('click', () => store.enterAR())
 ```

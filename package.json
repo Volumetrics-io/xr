@@ -3,7 +3,7 @@
   "author": "Bela Bohlender",
   "type": "module",
   "description": "",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "build": "tsc",
