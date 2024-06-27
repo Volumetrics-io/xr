@@ -15,9 +15,9 @@
   },
   "dependencies": {
     "playwright": "^1.44.0",
-    "@pmndrs/pointer-events": "git://github.com/pmndrs/xr#package-pointer-events",
-    "@pmndrs/xr": "git://github.com/pmndrs/xr#package-vanilla-xr",
-    "@react-three/xr": "git://github.com/pmndrs/xr#package-react-three-xr"
+    "@pmndrs/pointer-events": "git://github.com/volumetrics-io/xr#package-pointer-events",
+    "@pmndrs/xr": "git://github.com/volumetrics-io/xr#package-vanilla-xr",
+    "@react-three/xr": "git://github.com/volumetrics-io/xr#package-react-three-xr"
   },
   "devDependencies": {
     "@playwright/test": "^1.44.0",
