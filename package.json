@@ -5,11 +5,11 @@
   ],
   "main": "dist/index.js",
   "dependencies": {
-    "@pmndrs/xr": "git://github.com/pmndrs/xr#package-vanilla-xr",
+    "@pmndrs/xr": "git://github.com/volumetrics-io/xr#package-vanilla-xr",
     "suspend-react": "^0.1.3",
     "zustand": "^4.5.2",
-    "@pmndrs/pointer-events": "git://github.com/pmndrs/xr#package-pointer-events",
-    "@react-three/xr": "git://github.com/pmndrs/xr#package-react-three-xr"
+    "@pmndrs/pointer-events": "git://github.com/volumetrics-io/xr#package-pointer-events",
+    "@react-three/xr": "git://github.com/volumetrics-io/xr#package-react-three-xr"
   },
   "scripts": {
     "build": "tsc",
