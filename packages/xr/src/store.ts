@@ -169,6 +169,11 @@ export type XRState<T extends XRElementImplementations> = Readonly<
      * access to the emulator values to change the emulated input device imperatively
      */
     emulator?: XRDevice
+    /**
+     * enables asynchronous intersection testing for pointers to improve performance
+     * @default false
+     */
+    asyncIntersection: boolean
   } & WithRecord<T>
 >
 
@@ -301,6 +306,11 @@ export type XRStoreOptions<T extends XRElementImplementations> = {
    * @default false
    */
   secondaryInputSources?: boolean
+  /**
+   * enables asynchronous intersection testing for pointers to improve performance
+   * @default false
+   */
+  asyncIntersection?: boolean
 } & XRControllerLayoutLoaderOptions &
   XRHandLoaderOptions &
   Partial<WithRecord<T>> &
@@ -388,6 +398,7 @@ const baseInitialState: Omit<
   detectedMeshes: [],
   detectedPlanes: [],
   layerEntries: [],
+  asyncIntersection: false,
 }
 
 async function injectEmulator(
@@ -445,6 +456,7 @@ export function createXRStore<T extends XRElementImplementations>(options?: XRSt
     screenInput: options?.screenInput,
     transientPointer: options?.transientPointer,
     domOverlayRoot,
+    asyncIntersection: options?.asyncIntersection ?? false,
   }))
 
   const unsubscribeSessionOffer = store.subscribe(({ session }, { session: oldSession }) => {

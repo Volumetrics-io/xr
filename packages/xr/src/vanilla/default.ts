@@ -225,8 +225,9 @@ export function createDefaultXRHand(
     touchPointer: touchPointerOptions = true,
   }: DefaultXRHandOptions = {},
   combined: CombinedPointer,
+  asyncIntersection: boolean = false,
 ): () => void {
-  const combinedPointer = new CombinedPointer(false)
+  const combinedPointer = new CombinedPointer(false, asyncIntersection)
   const unregisterPointer = combined.register(combinedPointer)
 
   let destroyRayPointer: (() => void) | undefined
@@ -319,8 +320,9 @@ export function createDefaultXRController(
     model: modelOptions = true,
   }: DefaultXRControllerOptions = {},
   combined: CombinedPointer,
+  asyncIntersection: boolean = false,
 ): () => void {
-  const combinedPointer = new CombinedPointer(true)
+  const combinedPointer = new CombinedPointer(true, asyncIntersection)
   const unregisterPointer = combined.register(combinedPointer)
   const destroyRayPointer =
     rayPointerOptions === false

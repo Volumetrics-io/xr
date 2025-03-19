@@ -26,6 +26,10 @@ export function setupSyncXRElements(
   updatesList.push(onFrame)
   setupSyncIsVisible(store, (visible) => combined.setEnabled(visible, { timeStamp: performance.now() }))
   const inputGroup = new Group()
+  
+  // Get the asyncIntersection option from the store state
+  const { asyncIntersection } = store.getState() as unknown as { asyncIntersection?: boolean }
+  
   const syncControllers = setupSyncInputSourceElements(
     createDefaultXRController,
     scene,
@@ -35,6 +39,7 @@ export function setupSyncXRElements(
     inputGroup,
     updatesList,
     combined,
+    asyncIntersection,
   )
   const syncGazes = setupSyncInputSourceElements(
     createDefaultXRGaze,
@@ -45,6 +50,7 @@ export function setupSyncXRElements(
     inputGroup,
     updatesList,
     combined,
+    asyncIntersection,
   )
   const syncHands = setupSyncInputSourceElements(
     createDefaultXRHand,
@@ -55,6 +61,7 @@ export function setupSyncXRElements(
     inputGroup,
     updatesList,
     combined,
+    asyncIntersection,
   )
   const syncScreenInputs = setupSyncInputSourceElements(
     createDefaultXRScreenInput,
@@ -65,6 +72,7 @@ export function setupSyncXRElements(
     inputGroup,
     updatesList,
     combined,
+    asyncIntersection,
   )
   const syncTransientPointers = setupSyncInputSourceElements(
     createDefaultXRTransientPointer,
@@ -75,6 +83,7 @@ export function setupSyncXRElements(
     inputGroup,
     updatesList,
     combined,
+    asyncIntersection,
   )
   const unsubscribe = store.subscribe((s, prev) => {
     inputGroup.visible = s.visibilityState === 'visible'
@@ -116,6 +125,7 @@ function setupSyncInputSourceElements<K extends keyof XRInputSourceStateMap>(
     session: XRSession,
     options: any,
     combined: CombinedPointer,
+    asyncIntersection?: boolean,
   ) => void,
   scene: Object3D,
   getCamera: GetCamera,
@@ -124,6 +134,7 @@ function setupSyncInputSourceElements<K extends keyof XRInputSourceStateMap>(
   target: Object3D,
   updatesList: XRUpdatesList,
   combined: CombinedPointer,
+  asyncIntersection?: boolean,
 ) {
   return setupSync<K, WithRecord<XRElementImplementations>[K]>(key, (session, state, implementationInfo) =>
     runInXRUpdatesListContext(updatesList, () => {
@@ -139,7 +150,7 @@ function setupSyncInputSourceElements<K extends keyof XRInputSourceStateMap>(
       target.add(spaceObject)
       const customCleanup =
         typeof implementation === 'object'
-          ? defaultCreate(scene, getCamera, spaceObject, state, session, implementation, combined)
+          ? defaultCreate(scene, getCamera, spaceObject, state, session, implementation, combined, asyncIntersection)
           : implementation?.(store, spaceObject, state as any, session)
       return () => {
         target.remove(spaceObject)
